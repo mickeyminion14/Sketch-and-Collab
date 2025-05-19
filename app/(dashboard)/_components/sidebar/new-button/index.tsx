@@ -9,7 +9,7 @@ import {
 } from "../../../../../components/ui/dialog";
 
 import React from "react";
-import Hint from "../../../../../components/hint";
+import Hint from "../../../../../components/common/hint";
 
 export const NewButton = () => {
   return (

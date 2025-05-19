@@ -14,6 +14,8 @@ import type {
   FilterApi,
   FunctionReference,
 } from "convex/server";
+import type * as mutations_board from "../mutations/board.js";
+import type * as queries_board from "../queries/board.js";
 
 /**
  * A utility for referencing Convex functions in your app's API.
@@ -23,7 +25,10 @@ import type {
  * const myFunctionReference = api.myModule.myFunction;
  * ```
  */
-declare const fullApi: ApiFromModules<{}>;
+declare const fullApi: ApiFromModules<{
+  "mutations/board": typeof mutations_board;
+  "queries/board": typeof queries_board;
+}>;
 export declare const api: FilterApi<
   typeof fullApi,
   FunctionReference<any, "public">

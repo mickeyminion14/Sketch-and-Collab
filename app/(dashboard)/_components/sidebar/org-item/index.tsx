@@ -3,7 +3,7 @@
 import { useOrganization, useOrganizationList } from "@clerk/nextjs";
 import Image from "next/image";
 import { cn } from "../../../../../lib/utils";
-import Hint from "../../../../../components/hint";
+import Hint from "../../../../../components/common/hint";
 
 interface OrgItem {
   id: string;
