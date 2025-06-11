@@ -5,6 +5,7 @@ import { cn } from "../../../../../lib/utils";
 import { useApiMutation } from "../../../../../hooks/use-api-mutation";
 import { api } from "../../../../../convex/_generated/api";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const NewBoardButton = ({
   orgId,
@@ -14,12 +15,13 @@ const NewBoardButton = ({
   disabled?: boolean;
 }) => {
   const { mutate, pending } = useApiMutation(api.mutations.board.create);
-
+  const router = useRouter();
   const handleClick = async () => {
     if (disabled) return;
     try {
-      const { id } = await mutate({ orgId, title: "New Board" });
+      const id = await mutate({ orgId, title: "New Board" });
       toast.success("Board created");
+      router.push(`/board/${id}`);
     } catch {
       toast.error("Failed to create board");
     }

@@ -9,8 +9,10 @@ import { useApiMutation } from "../../../../hooks/use-api-mutation";
 import { Doc } from "../../../../convex/_generated/dataModel";
 import { GetTypeWithoutSystemFields } from "../../../../types";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const EmptyBoards = () => {
+  const router = useRouter();
   const { organization } = useOrganization();
   const { pending, mutate } = useApiMutation<
     Omit<
@@ -22,12 +24,13 @@ const EmptyBoards = () => {
   const onClick = async () => {
     if (!organization) return;
     try {
-      const res = await mutate({
+      const id = await mutate({
         orgId: organization?.id,
         title: "New Board",
       });
       toast.success("Board created successfully");
       //redirect to the board
+      router.push(`/board/${id}`);
     } catch (error) {
       toast.error("Failed to create board");
     }
