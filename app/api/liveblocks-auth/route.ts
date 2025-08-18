@@ -15,8 +15,6 @@ export async function POST(request: Request) {
   const authorization = await auth();
   const user = await currentUser();
 
-  console.log("Authorization:", { authorization, user });
-
   if (!authorization || !user) {
     return new Response("Unauthorized", { status: 403 });
   }
@@ -31,13 +29,6 @@ export async function POST(request: Request) {
     // redirect("/boards");
   }
 
-  console.log("Room", {
-    room,
-    board,
-    boardOrgId: board?.orgId,
-    userOrgId: authorization.orgId,
-  });
-
   if (board?.orgId !== authorization.orgId) {
     return new Response("Unauthorized", { status: 403 });
   }
@@ -47,17 +38,13 @@ export async function POST(request: Request) {
     picture: user.imageUrl,
   };
 
-  console.log("User Info:", { userInfo });
-
-  const session = liveblocks.prepareSession(user.id, { userInfo });
+  const session = liveblocks.prepareSession(user.id, { userInfo } as any);
 
   if (room) {
     session.allow(room, session.FULL_ACCESS);
   }
 
   const { status, body } = await session.authorize();
-  console.log("Liveblocks Authorization Status:", status);
-  console.log("Liveblocks Authorization Body:", body);
 
   return new Response(body, { status });
 }
