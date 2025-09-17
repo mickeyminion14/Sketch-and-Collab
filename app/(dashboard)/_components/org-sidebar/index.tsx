@@ -9,11 +9,7 @@ import { Button } from "../../../../components/ui/button";
 import { LayoutDashboard, Star } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { BORDER_COLOR } from "../../../../lib/colors";
-
-const font = Poppins({
-  subsets: ["latin"],
-  weight: ["600"],
-});
+import { font } from "../../../../lib/font";
 
 const OrgSidebar = () => {
   const searchParams = useSearchParams();
