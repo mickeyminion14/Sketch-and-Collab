@@ -17,14 +17,14 @@ export enum LayerType {
   Note,
 }
 
-export interface Layer<T extends LayerType> {
+export type Layer<T extends LayerType> = {
   type: T;
   x: number;
   y: number;
   height: number;
   width: number;
   fill: Color;
-}
+};
 
 export type RectangleLayer = Layer<LayerType.Rectangle>;
 
@@ -35,9 +35,16 @@ export type PathLayer = Layer<LayerType.Path> & {
 };
 export type TextLayer = Layer<LayerType.Text>;
 
-export type NoteLayer = Layer<LayerType.Text> & {
+export type NoteLayer = Layer<LayerType.Note> & {
   value: string;
 };
+
+export type Layers =
+  | RectangleLayer
+  | EllipseLayer
+  | PathLayer
+  | TextLayer
+  | NoteLayer;
 
 export type Point = {
   x: number;
