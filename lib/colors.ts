@@ -1,3 +1,5 @@
+import { Color } from "../types/canvas";
+
 export const BORDER_COLOR = "#E5E7EB";
 
 const COLORS = [
@@ -25,10 +27,8 @@ const COLORS = [
   "#8C33FF", // Vibrant Purple
   "#F6FF33", // Vibrant Yellow
   "#FF33D4", // Vibrant Magenta
-  "#33FF8C", // Vibrant Mint
   "#FF6F33", // Vibrant Coral
   "#6F33FF", // Vibrant Indigo
-  "#D4FF33", // Vibrant Lime
   "#FF3333", // Vibrant Red
   "#33FF33", // Vibrant Bright Green
   "#3333FF", // Vibrant Bright Blue
@@ -41,4 +41,8 @@ export const generateRandomColor = (seed: number) => {
   seed = Math.abs(seed);
   seed = seed % COLORS.length;
   return COLORS[seed];
+};
+
+export const convertRgbToHex = (color: Color) => {
+  return `#${color.r.toString(16).padStart(2, "0")}${color.g.toString(16).padStart(2, "0")}${color.b.toString(16).padStart(2, "0")}`;
 };

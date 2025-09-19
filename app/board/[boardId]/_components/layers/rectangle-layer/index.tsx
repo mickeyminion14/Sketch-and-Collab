@@ -1,5 +1,6 @@
 import React from "react";
 import { RectangleLayer as IRectangleLayer } from "../../../../../../types/canvas";
+import { convertRgbToHex } from "../../../../../../lib/colors";
 
 interface RectangleProps {
   id: string;
@@ -15,6 +16,8 @@ const RectangleLayer = ({
   selectionColor,
 }: RectangleProps) => {
   const { x, y, width, height, fill } = layer;
+  console.log(convertRgbToHex(fill));
+
   return (
     <rect
       className="drop-shadow-md"
@@ -27,8 +30,8 @@ const RectangleLayer = ({
       width={width}
       height={height}
       strokeWidth={1}
-      fill="#000"
-      stroke="transparent"
+      fill={convertRgbToHex(fill) || "#e2e2e2"}
+      stroke={selectionColor || "transparent"}
     />
   );
 };
