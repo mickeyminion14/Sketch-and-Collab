@@ -4,6 +4,10 @@ import React from "react";
 import { Color, LayerType } from "../../../../../types/canvas";
 import { useStorage } from "@liveblocks/react";
 import RectangleLayer from "../layers/rectangle-layer";
+import EllipseLayer from "../layers/ellipse-layer";
+import TriangleLayer from "../layers/triangle-layer";
+import TextLayer from "../layers/text-layer";
+import NoteLayer from "../layers/note-layer";
 
 const LayerPreview = ({
   id,
@@ -21,6 +25,15 @@ const LayerPreview = ({
   }
 
   switch (layer.type) {
+    case LayerType.Ellipse:
+      return (
+        <EllipseLayer
+          id={id}
+          layer={layer}
+          onPointerDown={onLayerPointerDown}
+          selectionColor={selectionColor}
+        />
+      );
     case LayerType.Rectangle:
       return (
         <RectangleLayer
@@ -31,6 +44,33 @@ const LayerPreview = ({
         />
       );
 
+    case LayerType.Triangle:
+      return (
+        <TriangleLayer
+          id={id}
+          layer={layer}
+          onPointerDown={onLayerPointerDown}
+          selectionColor={selectionColor}
+        />
+      );
+    case LayerType.Text:
+      return (
+        <TextLayer
+          id={id}
+          layer={layer}
+          onPointerDown={onLayerPointerDown}
+          selectionColor={selectionColor}
+        />
+      );
+    case LayerType.Note:
+      return (
+        <NoteLayer
+          id={id}
+          layer={layer}
+          onPointerDown={onLayerPointerDown}
+          selectionColor={selectionColor}
+        />
+      );
     default:
       console.warn("Unknown layer type");
       return null;

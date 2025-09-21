@@ -7,6 +7,7 @@ import {
   Redo2,
   Square,
   StickyNote,
+  Triangle,
   Type,
   Undo2,
 } from "lucide-react";
@@ -128,6 +129,17 @@ export const Toolbar = ({
             })
           }
           active={isToolbarButtonActive(CanvasAction.Ellipse)}
+        />
+        <ToolbarButton
+          label={CanvasAction.Triangle}
+          icon={Triangle}
+          onClick={() =>
+            setCanvasState({
+              mode: CanvasMode.Inserting,
+              layerType: LayerType.Triangle,
+            })
+          }
+          active={isToolbarButtonActive(CanvasAction.Triangle)}
         />
         <ToolbarButton
           label={CanvasAction.Pen}

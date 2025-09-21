@@ -1,32 +1,34 @@
 import React from "react";
-import { RectangleLayer as IRectangleLayer } from "../../../../../../types/canvas";
+import { TriangleLayer as ITriangleLayer } from "../../../../../../types/canvas";
 import { convertRgbToHex } from "../../../../../../lib/colors";
 
-interface RectangleProps {
+interface TriangleProps {
   id: string;
-  layer: IRectangleLayer;
+  layer: ITriangleLayer;
   onPointerDown: (e: React.PointerEvent, id: string) => void;
   selectionColor?: string;
 }
 
-const RectangleLayer = ({
+const TriangleLayer = ({
   id,
   layer,
   onPointerDown,
   selectionColor,
-}: RectangleProps) => {
+}: TriangleProps) => {
   const { x, y, width, height, fill } = layer;
+  const points = `
+    ${width / 2},0 
+    ${width},${height} 
+    0,${height}
+  `;
   return (
-    <rect
+    <polygon
       className="drop-shadow-md"
       onPointerDown={(e) => onPointerDown(e, id)}
       style={{
         transform: `translate(${x}px, ${y}px)`,
       }}
-      x={0}
-      y={0}
-      width={width}
-      height={height}
+      points={points}
       strokeWidth={1}
       fill={convertRgbToHex(fill) || "#e2e2e2"}
       stroke={selectionColor || "transparent"}
@@ -34,4 +36,4 @@ const RectangleLayer = ({
   );
 };
 
-export default RectangleLayer;
+export default TriangleLayer;

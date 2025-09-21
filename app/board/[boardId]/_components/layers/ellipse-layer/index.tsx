@@ -1,32 +1,32 @@
 import React from "react";
-import { RectangleLayer as IRectangleLayer } from "../../../../../../types/canvas";
+import { EllipseLayer as IEllipseLayer } from "../../../../../../types/canvas";
 import { convertRgbToHex } from "../../../../../../lib/colors";
 
-interface RectangleProps {
+interface EllipseProps {
   id: string;
-  layer: IRectangleLayer;
+  layer: IEllipseLayer;
   onPointerDown: (e: React.PointerEvent, id: string) => void;
   selectionColor?: string;
 }
 
-const RectangleLayer = ({
+const EllipseLayer = ({
   id,
   layer,
   onPointerDown,
   selectionColor,
-}: RectangleProps) => {
+}: EllipseProps) => {
   const { x, y, width, height, fill } = layer;
   return (
-    <rect
+    <ellipse
       className="drop-shadow-md"
       onPointerDown={(e) => onPointerDown(e, id)}
       style={{
         transform: `translate(${x}px, ${y}px)`,
       }}
-      x={0}
-      y={0}
-      width={width}
-      height={height}
+      cx={width / 2}
+      cy={height / 2}
+      rx={width / 2}
+      ry={height / 2}
       strokeWidth={1}
       fill={convertRgbToHex(fill) || "#e2e2e2"}
       stroke={selectionColor || "transparent"}
@@ -34,4 +34,4 @@ const RectangleLayer = ({
   );
 };
 
-export default RectangleLayer;
+export default EllipseLayer;

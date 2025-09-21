@@ -15,6 +15,7 @@ export enum LayerType {
   Path,
   Text,
   Note,
+  Triangle,
 }
 
 export type Layer<T extends LayerType> = {
@@ -30,10 +31,14 @@ export type RectangleLayer = Layer<LayerType.Rectangle>;
 
 export type EllipseLayer = Layer<LayerType.Ellipse>;
 
+export type TriangleLayer = Layer<LayerType.Triangle>;
+
 export type PathLayer = Layer<LayerType.Path> & {
   points: number[][];
 };
-export type TextLayer = Layer<LayerType.Text>;
+export type TextLayer = Layer<LayerType.Text> & {
+  value: string;
+};
 
 export type NoteLayer = Layer<LayerType.Note> & {
   value: string;
@@ -44,7 +49,8 @@ export type Layers =
   | EllipseLayer
   | PathLayer
   | TextLayer
-  | NoteLayer;
+  | NoteLayer
+  | TriangleLayer;
 
 export type Point = {
   x: number;
@@ -60,7 +66,7 @@ export enum Side {
   Top = 1,
   Bottom = 2,
   Left = 4,
-  Right = 6,
+  Right = 8,
 }
 
 export type CanvasState =
@@ -73,7 +79,8 @@ export type CanvasState =
         | LayerType.Ellipse
         | LayerType.Rectangle
         | LayerType.Text
-        | LayerType.Note;
+        | LayerType.Note
+        | LayerType.Triangle;
     }
   | { mode: CanvasMode.Resizing; initialBounds: XYWH; corner: Side }
   | { mode: CanvasMode.Pencil }
@@ -95,6 +102,7 @@ export enum CanvasAction {
   Note = "Sticky Note",
   Rectangle = "Rectangle",
   Ellipse = "Ellipse",
+  Triangle = "Triangle",
   Pen = "Pen",
   Undo = "Undo",
   Redo = "Redo",
