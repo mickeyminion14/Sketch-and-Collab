@@ -80,3 +80,35 @@ body,
     @apply bg-background text-foreground;
   }
 }
+
+.typewriter {
+  overflow: hidden;
+  border-right: 0.15em solid #ff7f50; /* Cursor */
+  white-space: nowrap;
+  font-family: monospace; /* Make typing smooth */
+  font-size: 1.2em;
+  animation:
+    typing 4s steps(100, end) forwards,
+    blink-caret 0.75s step-end infinite;
+}
+
+/* Typing effect */
+@keyframes typing {
+  from {
+    width: 0ch;
+  }
+  to {
+    width: 100ch;
+  }
+}
+
+/* Cursor blinking */
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #ff7f50;
+  }
+}

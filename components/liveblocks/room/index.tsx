@@ -26,7 +26,12 @@ const Room = ({
     >
       <RoomProvider
         id={roomId}
-        initialPresence={{ cursor: null, selection: [] }}
+        initialPresence={{
+          cursor: null,
+          selection: [],
+          pencilDraft: null,
+          penColor: null,
+        }}
         initialStorage={{
           layers: new LiveMap<string, LiveObject<Layers>>(),
           layerIds: new LiveList([]),

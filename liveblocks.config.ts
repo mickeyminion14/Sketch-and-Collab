@@ -1,7 +1,7 @@
 // Define Liveblocks types for your application
 
 import { LiveMap, LiveObject, LiveList } from "@liveblocks/client";
-import { Layers, RectangleLayer } from "./types/canvas";
+import { Color, Layers } from "./types/canvas";
 
 // https://liveblocks.io/docs/api-reference/liveblocks-react#Typing-your-data
 declare global {
@@ -11,6 +11,8 @@ declare global {
       // Example, real-time cursor coordinates
       cursor: { x: number; y: number } | null;
       selection: string[]; // array of selected layer IDs
+      pencilDraft: [x: number, y: number, pressure: number][] | null; // array of points for pencil draft
+      penColor: Color | null; // current pen color
     };
 
     // The Storage tree for the room, for useMutation, useStorage, etc.

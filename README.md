@@ -17,7 +17,7 @@ Sketch ideas, collaborate with your team, and bring your concepts to life seamle
 - 💾 **Real-time Database** – Board changes are synced instantly with **Convex**.
 - 🔐 **Authentication & Access Control** – Manage users, organizations, and invitations securely.
 - ⭐ **Favoriting Functionality** – Quickly access your most-used boards.
-- 🌐 **Next.js 14** – Leveraging the power of the latest Next.js features.
+- 🌐 **Next.js** – Leveraging the power of the latest Next.js features.
 - 💅 **TailwindCSS & ShadcnUI Styling** – Beautiful, responsive, and modern UI.
 
 ---
