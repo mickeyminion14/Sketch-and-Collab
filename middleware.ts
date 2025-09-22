@@ -7,10 +7,19 @@
 
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
-const isProtectedRoute = createRouteMatcher(["/(.*)"]);
+const isProtectedRoute = createRouteMatcher(["/dashboard(.*)", "/board(.*)"]);
+const isPublicRoot = createRouteMatcher(["/"]);
 
 export default clerkMiddleware((auth, req) => {
-  if (isProtectedRoute(req)) auth().protect();
+  const { userId, redirectToSignIn } = auth();
+
+  if (isPublicRoot(req) && userId) {
+    return Response.redirect(new URL("/dashboard", req.url));
+  }
+  // Protect dashboard and board routes
+  if (isProtectedRoute(req)) {
+    if (!userId) return redirectToSignIn();
+  }
 });
 
 export const config = {

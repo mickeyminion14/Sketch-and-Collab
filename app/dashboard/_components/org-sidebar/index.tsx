@@ -54,7 +54,7 @@ const OrgSidebar = () => {
           size={"lg"}
           className="font-normal justify-start w-full px-2"
         >
-          <Link href={"/"}>
+          <Link href={"/dashboard"}>
             <LayoutDashboard className="h-4 w-4 mr-2" />
             Team Boards
           </Link>
@@ -67,7 +67,7 @@ const OrgSidebar = () => {
         >
           <Link
             href={{
-              pathname: "/",
+              pathname: "/dashboard",
               query: { favorites: true },
             }}
           >

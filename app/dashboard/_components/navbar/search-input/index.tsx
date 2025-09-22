@@ -18,7 +18,7 @@ const SearchInput = () => {
   useEffect(() => {
     const url = qs.stringifyUrl(
       {
-        url: "/",
+        url: "/dashboard",
         query: { search: debouncedSearch },
       },
       { skipEmptyString: true, skipNull: true }

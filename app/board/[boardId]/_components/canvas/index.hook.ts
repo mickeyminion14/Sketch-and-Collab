@@ -40,7 +40,7 @@ export const useCanvas = () => {
 
   useErrorListener((err) => {
     toast.error("Board not found. Redirecting to home.");
-    router.push("/");
+    router.push("/dashboard");
   });
 
   const layerIds = useStorage((root) => root.layerIds) || [];
