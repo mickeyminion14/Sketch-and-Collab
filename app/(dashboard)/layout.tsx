@@ -6,6 +6,13 @@ interface DashboardLayoutProps {
   children: React.ReactNode;
 }
 
+const generateMetadata = () => {
+  return {
+    title: "Dashboard | Team Boards",
+    description: "Your Organization's collaborative space",
+  };
+};
+
 const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   return (
     <main className="h-full">

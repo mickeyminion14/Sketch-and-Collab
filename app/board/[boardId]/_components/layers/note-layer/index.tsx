@@ -16,20 +16,6 @@ const calculateFontSize = (width: number, height: number) => {
   return Math.min(height * scaleFactor, width * scaleFactor, maxFontSize);
 };
 
-// Darken color helper
-const darkenColor = (hex: string, percent: number) => {
-  let num = parseInt(hex.replace("#", ""), 16);
-  let r = (num >> 16) - (255 * percent) / 100;
-  let g = ((num >> 8) & 0x00ff) - (255 * percent) / 100;
-  let b = (num & 0x0000ff) - (255 * percent) / 100;
-
-  r = Math.max(0, r);
-  g = Math.max(0, g);
-  b = Math.max(0, b);
-
-  return `rgb(${r}, ${g}, ${b})`;
-};
-
 interface NoteProps {
   id: string;
   layer: INoteLayer;

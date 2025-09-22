@@ -6,6 +6,7 @@ import {
   useMutation,
   useStorage,
   useOthersMapped,
+  useErrorListener,
 } from "@liveblocks/react";
 import { useCallback, useMemo, useState } from "react";
 import {
@@ -29,10 +30,19 @@ import {
 import { nanoid } from "nanoid";
 import { LiveObject } from "@liveblocks/client";
 import { generateRandomColor } from "../../../../../lib/colors";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 const MAX_LAYERS = 1000;
 
 export const useCanvas = () => {
+  const router = useRouter();
+
+  useErrorListener((err) => {
+    toast.error("Board not found. Redirecting to home.");
+    router.push("/");
+  });
+
   const layerIds = useStorage((root) => root.layerIds) || [];
 
   const [canvasState, setCanvasState] = useState<CanvasState>({
