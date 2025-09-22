@@ -28,4 +28,4 @@ Sketch ideas, collaborate with your team, and bring your concepts to life seamle
 - **Styling**: [TailwindCSS](https://tailwindcss.com/) + [ShadcnUI](https://ui.shadcn.com/)
 - **Real-time Collaboration**: [Liveblocks](https://liveblocks.io/) – presence, cursors, and multi-user editing
 - **Database / Backend**: [Convex](https://convex.dev/) – real-time persistent storage and serverless functions
-- **Auth**: Secure authentication with organizations & invites
+- **Auth**: [Clerk] Secure authentication with organizations & invites
