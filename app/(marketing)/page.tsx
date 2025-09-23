@@ -20,19 +20,19 @@ export default function MarketingPage() {
         <h1 className="text-2xl md:text-5xl text-center text-neutral-800 mb-6">
           Sketch & Collab makes collaboration effortless
         </h1>
+        <div
+          className={cn(
+            "text-small md:text-xl text-neutral-600 mb-6 text-center",
+            textFont.className,
+            "typewriter"
+          )}
+        >
+          Sketch ideas, collaborate with your team, and bring your concepts to
+          life seamlessly. - accomplish it all with Sketch & Collab.
+        </div>
         <div className="text-2xl md:text-5xl bg-gradient-to-r from-orange-400 to-orange-700 text-white p-4 rounded-md  w-fit">
           Create together.
         </div>
-      </div>
-      <div
-        className={cn(
-          "text-small md:text-xl text-neutral-600 mt-4  text-center",
-          textFont.className,
-          "typewriter"
-        )}
-      >
-        Sketch ideas, collaborate with your team, and bring your concepts to
-        life seamlessly. - accomplish it all with Sketch & Collab.
       </div>
       <div className="mt-8 flex justify-center items-center flex-col">
         <h1 className="text-xl md:text-4xl text-center max-w-[800px] text-neutral-800 mb-6">
