@@ -58,7 +58,6 @@ const Canvas = ({ boardId }: CanvasProps) => {
         undo={history.undo}
         redo={history.redo}
       />
-      <h1 className="absolute top-50">{CanvasMode[canvasState.mode]}</h1>
       <SelectionTools camera={camera} setLastUsedColor={setLastUsedColor} />
       <svg
         onWheel={onWheel}
