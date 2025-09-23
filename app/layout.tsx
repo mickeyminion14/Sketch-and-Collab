@@ -8,7 +8,7 @@ import ModalProvider from "../providers/modal-provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Team Boards",
+  title: "Sketch & Collab",
   description: "Your Organization's collaborative space",
 };
 

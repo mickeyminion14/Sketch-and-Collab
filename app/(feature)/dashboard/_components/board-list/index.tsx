@@ -7,14 +7,18 @@ import { useQuery } from "convex/react";
 import { api } from "../../../../../convex/_generated/api";
 import BoardCard from "./board-card";
 import NewBoardButton from "./new-board-button";
+import { useSearchParams } from "next/navigation";
 interface BoardList {
   orgId: string;
-  query: {
-    search?: string;
-    favorites?: string;
-  };
 }
-const BoardList = ({ orgId, query }: BoardList) => {
+const BoardList = ({ orgId }: BoardList) => {
+  const searchParams = useSearchParams();
+
+  const query = {
+    search: searchParams.get("search") || "",
+    favorites: searchParams.get("favorites") || "",
+  };
+
   const result = useQuery(api.queries.board.get, {
     orgId,
     ...query,
